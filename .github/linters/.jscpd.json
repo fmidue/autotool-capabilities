@@ -1,0 +1,9 @@
+{
+  "threshold": 2,
+  "reporters": [
+    "consoleFull"
+  ],
+  "minLines": 2,
+  "max-lines": 2000,
+  "absolute": true
+}

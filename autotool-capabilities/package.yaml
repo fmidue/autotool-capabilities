@@ -28,6 +28,8 @@ ghc-options:
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Capabilities.Cache
 
 tests:
   autotool-capabilities-test:

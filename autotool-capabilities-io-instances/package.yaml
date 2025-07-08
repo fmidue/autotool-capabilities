@@ -26,6 +26,8 @@ ghc-options:
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Capabilities.Cache.IO
 
 tests:
   autotool-capabilitiesio-instances-test:

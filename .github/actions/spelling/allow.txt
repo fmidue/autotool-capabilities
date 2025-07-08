@@ -1,4 +1,4 @@
-Autotool
+autotool
 Bifunctor
 GHC
 Graphviz
