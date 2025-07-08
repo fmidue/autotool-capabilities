@@ -9,7 +9,7 @@ foldr
 fst
 GHC
 Github
-Graphviz
+graphviz
 hspec
 https
 Hspec
