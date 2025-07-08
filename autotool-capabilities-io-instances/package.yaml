@@ -3,7 +3,7 @@ name: autotool-capabilities-io-instances
 version: 0.1.0.0
 
 extra-source-files:
-- README.md
+  - README.md
 
 description: Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities/autotool-capabilities-io-instances#readme>
 
@@ -31,8 +31,8 @@ library:
 
 tests:
   autotool-capabilitiesio-instances-test:
-    main:                Spec.hs
-    source-dirs:         test
+    main: Spec.hs
+    source-dirs: test
     ghc-options:
       - -threaded
       - -rtsopts

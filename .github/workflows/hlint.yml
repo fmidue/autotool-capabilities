@@ -23,5 +23,10 @@ jobs:
       - name: 'Run HLint'
         uses: haskell-actions/hlint-run@v2
         with:
-          path: '["autotool-capabilities/src/", "autotool-capabilities/test/", "autotool-capabilities-io-instances/src/", "autotool-capabilities-io-instances/test/"]'
+          path: >
+            [ "autotool-capabilities/src/"
+            , "autotool-capabilities/test/"
+            , "autotool-capabilities-io-instances/src/"
+            , "autotool-capabilities-io-instances/test/"
+            ]
           fail-on: suggestion
