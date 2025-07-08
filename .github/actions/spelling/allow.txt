@@ -1,9 +1,5 @@
 autotool
 Bifunctor
-GHC
-Graphviz
-HUnit
-Hspec
 bimap
 concat
 elems
@@ -11,9 +7,13 @@ fmap
 foldl
 foldr
 fst
+GHC
 Github
+Graphviz
 hspec
 https
+Hspec
+HUnit
 mconcat
 mempty
 println
@@ -21,6 +21,7 @@ rnf
 scanl
 snd
 uncurry
+uml
 unlines
 utf
 yaml
