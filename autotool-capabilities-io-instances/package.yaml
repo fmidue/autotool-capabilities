@@ -10,8 +10,21 @@ description: Please see the README on GitHub at <https://github.com/fmidue/autot
 dependencies:
   - autotool-capabilities
   - base >= 4.7 && < 5
+  - call-alloy >= 0.6.0.2 && < 0.7
+  - call-plantuml
+  - containers
   - bytestring
+  - diagrams-graphviz
+  - diagrams-lib
+  - diagrams-svg
   - directory
+  - graphviz
+  - hxt
+  - string-interpolate
+  - SVGFonts
+  - svg-builder
+  - text
+  - xml-conduit
 
 ghc-options:
   - -Wall
@@ -27,7 +40,11 @@ ghc-options:
 library:
   source-dirs: src
   exposed-modules:
+    - Capabilities.Alloy.IO
     - Capabilities.Cache.IO
+    - Capabilities.Diagrams.IO
+    - Capabilities.Graphviz.IO
+    - Capabilities.PlantUml.IO
 
 tests:
   autotool-capabilitiesio-instances-test:

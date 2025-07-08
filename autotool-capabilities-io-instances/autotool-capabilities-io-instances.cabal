@@ -13,17 +13,34 @@ extra-source-files:
 
 library
   exposed-modules:
+      Capabilities.Alloy.IO
       Capabilities.Cache.IO
+      Capabilities.Diagrams.IO
+      Capabilities.Graphviz.IO
+      Capabilities.PlantUml.IO
   other-modules:
       Paths_autotool_capabilities_io_instances
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      autotool-capabilities
+      SVGFonts
+    , autotool-capabilities
     , base >=4.7 && <5
     , bytestring
+    , call-alloy >=0.6.0.2 && <0.7
+    , call-plantuml
+    , containers
+    , diagrams-graphviz
+    , diagrams-lib
+    , diagrams-svg
     , directory
+    , graphviz
+    , hxt
+    , string-interpolate
+    , svg-builder
+    , text
+    , xml-conduit
   default-language: Haskell2010
 
 test-suite autotool-capabilitiesio-instances-test
@@ -35,9 +52,22 @@ test-suite autotool-capabilitiesio-instances-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      autotool-capabilities
+      SVGFonts
+    , autotool-capabilities
     , autotool-capabilities-io-instances
     , base >=4.7 && <5
     , bytestring
+    , call-alloy >=0.6.0.2 && <0.7
+    , call-plantuml
+    , containers
+    , diagrams-graphviz
+    , diagrams-lib
+    , diagrams-svg
     , directory
+    , graphviz
+    , hxt
+    , string-interpolate
+    , svg-builder
+    , text
+    , xml-conduit
   default-language: Haskell2010

@@ -13,16 +13,27 @@ extra-source-files:
 
 library
   exposed-modules:
+      Capabilities.Alloy
       Capabilities.Cache
+      Capabilities.Diagrams
+      Capabilities.Graphviz
+      Capabilities.PlantUml
   other-modules:
       Paths_autotool_capabilities
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      SHA
+      MonadRandom
+    , SHA
+    , SVGFonts
     , base >=4.7 && <5
     , bytestring
+    , call-alloy
+    , diagrams-lib
+    , diagrams-svg
+    , fgl
+    , graphviz
     , output-blocks
     , transformers
     , utf8-string
@@ -37,10 +48,17 @@ test-suite autotool-capabilities-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      SHA
+      MonadRandom
+    , SHA
+    , SVGFonts
     , autotool-capabilities
     , base >=4.7 && <5
     , bytestring
+    , call-alloy
+    , diagrams-lib
+    , diagrams-svg
+    , fgl
+    , graphviz
     , output-blocks
     , transformers
     , utf8-string
