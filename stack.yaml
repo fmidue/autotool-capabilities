@@ -5,3 +5,9 @@ snapshot:
 packages:
   - autotool-capabilities
   - autotool-capabilities-io-instances
+
+extra-deps:
+  - git: https://github.com/fmidue/output-blocks
+    commit: 17cf98f45928f4a1e4a3e301a2911fddad6e4357
+    subdirs:
+      - output-blocks

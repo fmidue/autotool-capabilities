@@ -6,21 +6,26 @@ cabal-version: 1.12
 
 name:           autotool-capabilities
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities#readme>
+description:    Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities/autotool-capabilities#readme>
 build-type:     Simple
 extra-source-files:
     README.md
 
 library
   exposed-modules:
-      Lib
+      Capabilities.Cache
   other-modules:
       Paths_autotool_capabilities
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      SHA
+    , base >=4.7 && <5
+    , bytestring
+    , output-blocks
+    , transformers
+    , utf8-string
   default-language: Haskell2010
 
 test-suite autotool-capabilities-test
@@ -32,6 +37,11 @@ test-suite autotool-capabilities-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      autotool-capabilities
+      SHA
+    , autotool-capabilities
     , base >=4.7 && <5
+    , bytestring
+    , output-blocks
+    , transformers
+    , utf8-string
   default-language: Haskell2010
