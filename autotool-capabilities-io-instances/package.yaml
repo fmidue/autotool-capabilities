@@ -1,0 +1,36 @@
+---
+name: autotool-capabilities-io-instances
+version: 0.1.0.0
+
+extra-source-files:
+- README.md
+
+description: Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities/autotool-capabilities-io-instances#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+library:
+  source-dirs: src
+
+tests:
+  autotool-capabilitiesio-instances-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - autotool-capabilities-io-instances
