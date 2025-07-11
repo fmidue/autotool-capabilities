@@ -20,6 +20,7 @@ dependencies:
   - directory
   - graphviz
   - hxt
+  - latex-svg-image
   - string-interpolate
   - SVGFonts
   - svg-builder
@@ -44,6 +45,7 @@ library:
     - Capabilities.Cache.IO
     - Capabilities.Diagrams.IO
     - Capabilities.Graphviz.IO
+    - Capabilities.LatexSvg.IO
     - Capabilities.PlantUml.IO
 
 tests:

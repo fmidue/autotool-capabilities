@@ -16,6 +16,7 @@ dependencies:
   - fgl
   - graphviz
   - MonadRandom
+  - latex-svg-image
   - output-blocks
   - SHA
   - SVGFonts
@@ -40,6 +41,7 @@ library:
     - Capabilities.Cache
     - Capabilities.Diagrams
     - Capabilities.Graphviz
+    - Capabilities.LatexSvg
     - Capabilities.PlantUml
 
 tests:
