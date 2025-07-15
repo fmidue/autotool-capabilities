@@ -16,14 +16,14 @@ import qualified Data.Text              as T (
   length,
   pack,
   )
-import qualified Data.Text.IO           as T (writeFile)
+import Data.Text.Encoding               (encodeUtf8)
 import qualified Data.Text.Lazy         as LT (Text, toStrict)
 import qualified Diagrams.Backend.SVG   as Backend
 import qualified Graphics.SVGFonts.Fonts (
   lin
   )
 
-import Capabilities.Diagrams            (MonadDiagrams (lin, writeSvg))
+import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
 
 import Data.ByteString.Internal         (w2c)
 import Data.Data                        (Typeable)
@@ -64,9 +64,7 @@ import Data.Maybe                       (maybeToList)
 
 instance MonadDiagrams IO where
   lin = Graphics.SVGFonts.Fonts.lin
-  writeSvg file g = do
-    svg <- groupSVG $ renderSVG (dims2D 400 400) g
-    T.writeFile file $ LT.toStrict svg
+  renderDiagram g = encodeUtf8 . LT.toStrict <$> groupSVG (renderSVG (dims2D 400 400) g)
 
 data SVGOptions = SVGOptions
   { xmlns, height, iStrokeOpacity, viewBox, fontSize, width, xmlnsXlink, iStroke, version :: T.Text,

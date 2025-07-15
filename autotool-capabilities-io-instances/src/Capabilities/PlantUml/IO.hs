@@ -3,7 +3,6 @@
 
 module Capabilities.PlantUml.IO () where
 
-import qualified Data.ByteString                  as B (writeFile)
 import qualified Language.PlantUML.Call           as PlantUml (
   DiagramType (SVG),
   drawPlantUMLDiagram,
@@ -12,6 +11,4 @@ import qualified Language.PlantUML.Call           as PlantUml (
 import Capabilities.PlantUml            (MonadPlantUml (..))
 
 instance MonadPlantUml IO where
-  drawPlantUmlSvg fileName plantUml= do
-    svg <- PlantUml.drawPlantUMLDiagram PlantUml.SVG plantUml
-    B.writeFile fileName svg
+  drawPlantUmlSvg = PlantUml.drawPlantUMLDiagram PlantUml.SVG
