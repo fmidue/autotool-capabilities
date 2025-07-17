@@ -9,4 +9,4 @@ import Capabilities.WriteFile           (MonadWriteFile (..))
 
 
 instance MonadWriteFile IO where
-  writeToFile p = (p <$) . BS.writeFile p
+  writeToFile = BS.writeFile

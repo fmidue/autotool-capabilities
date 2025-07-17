@@ -11,7 +11,7 @@ import Control.OutputCapable.Blocks.Generic (
 import Data.ByteString                  (ByteString)
 
 class Monad m => MonadWriteFile m where
-  writeToFile :: FilePath -> ByteString -> m FilePath
+  writeToFile :: FilePath -> ByteString -> m ()
 
 instance MonadWriteFile m => MonadWriteFile (GenericReportT l o m)  where
   writeToFile path = lift . writeToFile path
