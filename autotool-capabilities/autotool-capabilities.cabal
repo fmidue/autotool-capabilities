@@ -19,6 +19,7 @@ library
       Capabilities.Graphviz
       Capabilities.LatexSvg
       Capabilities.PlantUml
+      Capabilities.WriteFile
   other-modules:
       Paths_autotool_capabilities
   hs-source-dirs:
