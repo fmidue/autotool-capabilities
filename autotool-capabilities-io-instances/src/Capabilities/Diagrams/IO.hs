@@ -67,14 +67,30 @@ instance MonadDiagrams IO where
   renderDiagram g = encodeUtf8 . LT.toStrict <$> groupSVG (renderSVG (dims2D 400 400) g)
 
 data SVGOptions = SVGOptions
-  { xmlns, height, iStrokeOpacity, viewBox, fontSize, width, xmlnsXlink, iStroke, version :: T.Text,
-    groups :: [SVGGroup] }
-  deriving (Show, Eq)
+  { xmlns
+  , height
+  , iStrokeOpacity
+  , viewBox
+  , fontSize
+  , width
+  , xmlnsXlink
+  , iStroke
+  , version :: T.Text
+  , groups :: [SVGGroup]
+  } deriving (Show, Eq)
 
 data SVGGroup = SVGGroup
-  { strokeLinejoin, strokeOpacity, fillOpacity, stroke, strokeWidth, fill, strokeLinecap, strokeMiterlimit, svgClass :: T.Text,
-    paths :: [Path] }
-  deriving (Show, Eq)
+  { strokeLinejoin
+  , strokeOpacity
+  , fillOpacity
+  , stroke
+  , strokeWidth
+  , fill
+  , strokeLinecap
+  , strokeMiterlimit
+  , svgClass :: T.Text
+  , paths :: [Path]
+  } deriving (Show, Eq)
 
 data Path = Path {
   d                 :: T.Text,
@@ -162,14 +178,14 @@ applyClass x = [ modify p | p <- paths x]
 formatSVG :: [SVGGroup] -> [SVGGroup]
 formatSVG []     = []
 formatSVG (x:xs) = x{ paths = groupPaths } : formatSVG rest
-                where
-                  groupPaths
-                    | isLabelOrEdge x = concatMap applyClass (filter (equalGroup (svgClass x) . svgClass) (x:xs))
-                    | otherwise = applyClass x ++ concatMap applyClass (takeWhile (equalGroup (svgClass x) . svgClass) xs)
-                  rest
-                    | isLabelOrEdge x = filter (not . equalGroup (svgClass x) . svgClass) xs
-                    | otherwise = dropWhile (equalGroup (svgClass x) . svgClass) xs
-                  isLabelOrEdge z = let fx = T.filter (/='.') (svgClass z) in fx == "elabel" || fx == "edge"
+  where
+    groupPaths
+      | isLabelOrEdge x = concatMap applyClass (filter (equalGroup (svgClass x) . svgClass) (x:xs))
+      | otherwise = applyClass x ++ concatMap applyClass (takeWhile (equalGroup (svgClass x) . svgClass) xs)
+    rest
+      | isLabelOrEdge x = filter (not . equalGroup (svgClass x) . svgClass) xs
+      | otherwise = dropWhile (equalGroup (svgClass x) . svgClass) xs
+    isLabelOrEdge z = let fx = T.filter (/='.') (svgClass z) in fx == "elabel" || fx == "edge"
 
 renderSVG :: (Show n, Typeable n, RealFloat n, Monoid m)
   => SizeSpec V2 n

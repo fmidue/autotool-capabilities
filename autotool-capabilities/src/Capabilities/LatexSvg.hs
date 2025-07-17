@@ -11,7 +11,13 @@ import Control.OutputCapable.Blocks.Generic (
   )
 import Data.ByteString                  (ByteString)
 import Data.Maybe                       (fromMaybe)
-import Image.LaTeX.Render               (Formula, FormulaOptions(..), EnvironmentOptions, defaultEnv, defaultFormulaOptions)
+import Image.LaTeX.Render (
+  Formula,
+  FormulaOptions(..),
+  EnvironmentOptions,
+  defaultEnv,
+  defaultFormulaOptions,
+  )
 
 class Monad m => MonadLatexSvg m where
   renderImage :: EnvironmentOptions -> FormulaOptions -> Formula -> m ByteString
