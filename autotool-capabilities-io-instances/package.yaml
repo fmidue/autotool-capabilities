@@ -47,6 +47,7 @@ library:
     - Capabilities.Graphviz.IO
     - Capabilities.LatexSvg.IO
     - Capabilities.PlantUml.IO
+    - Capabilities.WriteFile.IO
 
 tests:
   autotool-capabilitiesio-instances-test:

@@ -19,6 +19,7 @@ library
       Capabilities.Graphviz.IO
       Capabilities.LatexSvg.IO
       Capabilities.PlantUml.IO
+      Capabilities.WriteFile.IO
   other-modules:
       Paths_autotool_capabilities_io_instances
   hs-source-dirs:

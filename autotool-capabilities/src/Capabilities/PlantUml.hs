@@ -11,7 +11,7 @@ import Control.OutputCapable.Blocks.Generic (
 import Data.ByteString                  (ByteString)
 
 class Monad m => MonadPlantUml m where
-  drawPlantUmlSvg :: FilePath -> ByteString -> m ()
+  drawPlantUmlSvg :: ByteString -> m ByteString
 
 instance MonadPlantUml m => MonadPlantUml (GenericReportT l o m) where
-  drawPlantUmlSvg file = lift . drawPlantUmlSvg file
+  drawPlantUmlSvg = lift . drawPlantUmlSvg
