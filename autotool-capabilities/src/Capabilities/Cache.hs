@@ -46,13 +46,14 @@ cache
   -- ^ some identifying name for what (part of file name)
   -> a
   -- ^ what
-  -> (FilePath -> a -> m b)
+  -> (a -> m ByteString)
   -- ^ how to create something from what
   -> m FilePath
-cache path ext name what how = (file <$) . cacheBy $ how file what
+cache path ext name what how = (file <$) . cacheBy $ how what
   where
     cacheBy create = do
-      let create' = create >> writeShowFile whatFile what'
+      let create' = create >>= writeShowFile file >>
+                    writeShowFile whatFile what'
       isFile <- doesCacheExist file
       if isFile
         then do

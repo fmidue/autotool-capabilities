@@ -16,14 +16,14 @@ import qualified Data.Text              as T (
   length,
   pack,
   )
-import qualified Data.Text.IO           as T (writeFile)
+import Data.Text.Encoding               (encodeUtf8)
 import qualified Data.Text.Lazy         as LT (Text, toStrict)
 import qualified Diagrams.Backend.SVG   as Backend
 import qualified Graphics.SVGFonts.Fonts (
   lin
   )
 
-import Capabilities.Diagrams            (MonadDiagrams (lin, writeSvg))
+import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
 
 import Data.ByteString.Internal         (w2c)
 import Data.Data                        (Typeable)
@@ -64,19 +64,33 @@ import Data.Maybe                       (maybeToList)
 
 instance MonadDiagrams IO where
   lin = Graphics.SVGFonts.Fonts.lin
-  writeSvg file g = do
-    svg <- groupSVG $ renderSVG (dims2D 400 400) g
-    T.writeFile file $ LT.toStrict svg
+  renderDiagram g = encodeUtf8 . LT.toStrict <$> groupSVG (renderSVG (dims2D 400 400) g)
 
 data SVGOptions = SVGOptions
-  { xmlns, height, iStrokeOpacity, viewBox, fontSize, width, xmlnsXlink, iStroke, version :: T.Text,
-    groups :: [SVGGroup] }
-  deriving (Show, Eq)
+  { xmlns
+  , height
+  , iStrokeOpacity
+  , viewBox
+  , fontSize
+  , width
+  , xmlnsXlink
+  , iStroke
+  , version :: T.Text
+  , groups :: [SVGGroup]
+  } deriving (Show, Eq)
 
 data SVGGroup = SVGGroup
-  { strokeLinejoin, strokeOpacity, fillOpacity, stroke, strokeWidth, fill, strokeLinecap, strokeMiterlimit, svgClass :: T.Text,
-    paths :: [Path] }
-  deriving (Show, Eq)
+  { strokeLinejoin
+  , strokeOpacity
+  , fillOpacity
+  , stroke
+  , strokeWidth
+  , fill
+  , strokeLinecap
+  , strokeMiterlimit
+  , svgClass :: T.Text
+  , paths :: [Path]
+  } deriving (Show, Eq)
 
 data Path = Path {
   d                 :: T.Text,
@@ -164,14 +178,14 @@ applyClass x = [ modify p | p <- paths x]
 formatSVG :: [SVGGroup] -> [SVGGroup]
 formatSVG []     = []
 formatSVG (x:xs) = x{ paths = groupPaths } : formatSVG rest
-                where
-                  groupPaths
-                    | isLabelOrEdge x = concatMap applyClass (filter (equalGroup (svgClass x) . svgClass) (x:xs))
-                    | otherwise = applyClass x ++ concatMap applyClass (takeWhile (equalGroup (svgClass x) . svgClass) xs)
-                  rest
-                    | isLabelOrEdge x = filter (not . equalGroup (svgClass x) . svgClass) xs
-                    | otherwise = dropWhile (equalGroup (svgClass x) . svgClass) xs
-                  isLabelOrEdge z = let fx = T.filter (/='.') (svgClass z) in fx == "elabel" || fx == "edge"
+  where
+    groupPaths
+      | isLabelOrEdge x = concatMap applyClass (filter (equalGroup (svgClass x) . svgClass) (x:xs))
+      | otherwise = applyClass x ++ concatMap applyClass (takeWhile (equalGroup (svgClass x) . svgClass) xs)
+    rest
+      | isLabelOrEdge x = filter (not . equalGroup (svgClass x) . svgClass) xs
+      | otherwise = dropWhile (equalGroup (svgClass x) . svgClass) xs
+    isLabelOrEdge z = let fx = T.filter (/='.') (svgClass z) in fx == "elabel" || fx == "edge"
 
 renderSVG :: (Show n, Typeable n, RealFloat n, Monoid m)
   => SizeSpec V2 n

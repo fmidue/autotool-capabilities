@@ -4,6 +4,8 @@
 module Capabilities.LatexSvg.IO () where
 
 import Capabilities.LatexSvg            (MonadLatexSvg (..))
+import Data.Text                        (pack)
+import Data.Text.Encoding               (encodeUtf8)
 import Image.LaTeX.Render               (imageForFormula)
 
 
@@ -13,6 +15,4 @@ instance MonadLatexSvg IO where
     case render of
       (Left err)  -> error $ unlines
         ["failed to render an image with the given formula: ", show err]
-      (Right svg) -> pure svg
-
-  writeImage = writeFile
+      (Right svg) -> pure $ encodeUtf8 $ pack svg
