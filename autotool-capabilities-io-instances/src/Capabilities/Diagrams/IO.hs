@@ -1,4 +1,5 @@
 {-# LANGUAGE Arrows #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE OverloadedLists #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
@@ -25,6 +26,8 @@ import qualified Graphics.SVGFonts.Fonts (
 
 import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
 
+import Control.Monad.Random             (RandT)
+import Control.Monad.Trans.Class        (MonadTrans (lift))
 import Data.ByteString.Internal         (w2c)
 import Data.Data                        (Typeable)
 import Diagrams.Backend.SVG             (SVG(SVG))
@@ -65,6 +68,10 @@ import Data.Maybe                       (maybeToList)
 instance MonadDiagrams IO where
   lin = Graphics.SVGFonts.Fonts.lin
   renderDiagram g = encodeUtf8 . LT.toStrict <$> groupSVG (renderSVG (dims2D 400 400) g)
+
+instance MonadDiagrams (RandT g IO) where
+  lin = lift lin
+  renderDiagram = lift . renderDiagram
 
 data SVGOptions = SVGOptions
   { xmlns
