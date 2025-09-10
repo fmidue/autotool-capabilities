@@ -23,6 +23,10 @@ dependencies:
   - transformers
   - utf8-string
 
+when:
+  condition: flag(alloy-use-sat4j)
+  cpp-options: -DALLOY_USE_SAT4J
+
 ghc-options:
   - -Wall
   - -Wcompat
@@ -55,3 +59,9 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - autotool-capabilities
+
+flags:
+  alloy-use-sat4j:
+    description: When calling alloy use the SAT4J SAT solver
+    manual: true
+    default: false
