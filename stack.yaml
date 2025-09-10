@@ -1,6 +1,10 @@
 ---
 resolver: lts-21.25
 
+flags:
+  autotool-capabilities:
+    alloy-use-sat4j: false
+
 packages:
   - autotool-capabilities
   - autotool-capabilities-io-instances
