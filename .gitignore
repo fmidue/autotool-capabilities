@@ -3,3 +3,4 @@
 dist-newstyle/
 hlint-*/
 *.tar.gz
+stack.yaml.lock
