@@ -29,5 +29,11 @@
 # GHC LANGUAGE extension, HLINT options etc.
 \{-# .* #-\}
 
+# Compiler flags
+(?:^|[\t ,"'`=(])-[DPWXYLlf](?=[A-Z]{2,}|[A-Z][a-z]|[a-z]{2,})
+
+# tar arguments
+\b(?:\\n|)g?tar(?:\.exe|)(?:(?:\s+--[-a-zA-Z]+|\s+-[a-zA-Z]+|\s[ABGJMOPRSUWZacdfh-pr-xz]+\b)(?:=[^ ]*|))+
+
 # ignore urls
 https?://[-+0-9a-zA-Z?&=_\/%.]*
