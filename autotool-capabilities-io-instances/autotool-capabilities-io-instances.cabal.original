@@ -1,0 +1,70 @@
+cabal-version: 1.12
+name:           autotool-capabilities-io-instances
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities/autotool-capabilities-io-instances#readme>
+build-type:     Simple
+extra-source-files:
+    README.md
+library
+  exposed-modules:
+      Capabilities.Alloy.IO
+      Capabilities.Cache.IO
+      Capabilities.Diagrams.IO
+      Capabilities.Graphviz.IO
+      Capabilities.LatexSvg.IO
+      Capabilities.PlantUml.IO
+      Capabilities.WriteFile.IO
+  other-modules:
+      Paths_autotool_capabilities_io_instances
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      SVGFonts
+    , autotool-capabilities
+    , base >=4.7 && <5
+    , bytestring
+    , call-alloy >=0.6.0.2 && <0.7
+    , call-plantuml
+    , containers
+    , diagrams-graphviz
+    , diagrams-lib
+    , diagrams-svg
+    , directory
+    , graphviz
+    , hxt
+    , latex-svg-image
+    , string-interpolate
+    , svg-builder
+    , text
+    , xml-conduit
+  default-language: Haskell2010
+test-suite autotool-capabilitiesio-instances-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_autotool_capabilities_io_instances
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      SVGFonts
+    , autotool-capabilities
+    , autotool-capabilities-io-instances
+    , base >=4.7 && <5
+    , bytestring
+    , call-alloy >=0.6.0.2 && <0.7
+    , call-plantuml
+    , containers
+    , diagrams-graphviz
+    , diagrams-lib
+    , diagrams-svg
+    , directory
+    , graphviz
+    , hxt
+    , latex-svg-image
+    , string-interpolate
+    , svg-builder
+    , text
+    , xml-conduit
+  default-language: Haskell2010

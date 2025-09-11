@@ -1,0 +1,70 @@
+cabal-version: 1.12
+name:           autotool-capabilities
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities/autotool-capabilities#readme>
+build-type:     Simple
+extra-source-files:
+    README.md
+flag alloy-use-sat4j
+  description: When calling alloy use the SAT4J SAT solver
+  manual: True
+  default: False
+library
+  exposed-modules:
+      Capabilities.Alloy
+      Capabilities.Cache
+      Capabilities.Diagrams
+      Capabilities.Graphviz
+      Capabilities.LatexSvg
+      Capabilities.PlantUml
+      Capabilities.WriteFile
+  other-modules:
+      Paths_autotool_capabilities
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      MonadRandom
+    , SHA
+    , SVGFonts
+    , base >=4.7 && <5
+    , bytestring
+    , call-alloy
+    , diagrams-lib
+    , diagrams-svg
+    , fgl
+    , graphviz
+    , latex-svg-image
+    , output-blocks
+    , transformers
+    , utf8-string
+  default-language: Haskell2010
+  if flag(alloy-use-sat4j)
+    cpp-options: -DALLOY_USE_SAT4J
+test-suite autotool-capabilities-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_autotool_capabilities
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      MonadRandom
+    , SHA
+    , SVGFonts
+    , autotool-capabilities
+    , base >=4.7 && <5
+    , bytestring
+    , call-alloy
+    , diagrams-lib
+    , diagrams-svg
+    , fgl
+    , graphviz
+    , latex-svg-image
+    , output-blocks
+    , transformers
+    , utf8-string
+  default-language: Haskell2010
+  if flag(alloy-use-sat4j)
+    cpp-options: -DALLOY_USE_SAT4J
