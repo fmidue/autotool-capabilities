@@ -68,6 +68,11 @@ jobs:
             cspell:filetypes/filetypes.txt
             cspell:de_DE/src/German_de_DE.dic
             cspell:de_DE/src/hunspell/index.dic
+            cspell:html/dict/html.txt
+            cspell:css/dict/css.txt
+            cspell:typescript/dict/typescript.txt
+            cspell:node/dict/node.txt
+            cspell:k8s/dict/k8s.txt
           ignore-pattern: '[^\p{Ll}\p{Lm}\p{Lt}\p{Lu}]'
           upper-pattern: '[\p{Lu}\p{Lt}\p{Lm}]'
           lower-pattern: '[\p{Ll}\p{Lm}]'
