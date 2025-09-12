@@ -4,7 +4,6 @@ module Capabilities.Diagrams (
   MonadDiagrams (lin, renderDiagram),
   ) where
 
-import Control.Monad.Random                       (RandT)
 import Control.Monad.Trans.Class                  (MonadTrans (lift))
 import Control.OutputCapable.Blocks.Generic (
   GenericReportT
@@ -24,9 +23,5 @@ class Monad m => MonadDiagrams m where
     -> m ByteString
 
 instance MonadDiagrams m => MonadDiagrams (GenericReportT l o m)  where
-  lin = lift lin
-  renderDiagram = lift . renderDiagram
-
-instance MonadDiagrams m => MonadDiagrams (RandT g m) where
   lin = lift lin
   renderDiagram = lift . renderDiagram
