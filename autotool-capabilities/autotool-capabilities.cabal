@@ -12,7 +12,7 @@ extra-source-files:
     README.md
 
 flag alloy-use-sat4j
-  description: When calling alloy use the SAT4J SAT solver
+  description: When calling Alloy, use the SAT4J SAT solver
   manual: True
   default: False
 
