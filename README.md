@@ -5,7 +5,7 @@
 On Windows, you may have to use `SAT4J` instead of `MiniSat`.
 In order to do so, you can set or change the appropriate flag for
 `autotool-capabilities` under `flags` in the relevant `stack.yaml` to `true`.
-The resulting section would look like this:
+Thus the section might look like this:
 
 ``` yaml
 flags:
