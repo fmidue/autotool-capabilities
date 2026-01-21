@@ -1,5 +1,19 @@
 # autotool-capabilities
 
+## Configuration
+
+You may limit the maximum bit width by adding a limit (here 5) to your stack
+command like `stack build --ghc-options="-DMAX_BIT_WIDTH=5"` or by amending your
+`stack.yaml` like:
+
+``` yaml
+ghc-options:
+  autotool-capabilities: -DMAX_BIT_WIDTH=5
+```
+
+This configuration is then used in order to reject configurations that do not
+adhere to this limit.
+
 ## Compatibility
 
 On Windows, you may have to use `SAT4J` instead of `MiniSat`.
