@@ -18,6 +18,7 @@ dependencies:
   - diagrams-graphviz
   - diagrams-lib
   - diagrams-svg
+  - exceptions
   - directory
   - graphviz
   - hxt
@@ -46,6 +47,7 @@ library:
     - Capabilities.Alloy.IO
     - Capabilities.Cache.IO
     - Capabilities.Diagrams.IO
+    - Capabilities.Exceptions.IO
     - Capabilities.Graphviz.IO
     - Capabilities.LatexSvg.IO
     - Capabilities.PlantUml.IO

@@ -16,6 +16,7 @@ library
       Capabilities.Alloy.IO
       Capabilities.Cache.IO
       Capabilities.Diagrams.IO
+      Capabilities.Exceptions.IO
       Capabilities.Graphviz.IO
       Capabilities.LatexSvg.IO
       Capabilities.PlantUml.IO
@@ -38,6 +39,7 @@ library
     , diagrams-lib
     , diagrams-svg
     , directory
+    , exceptions
     , graphviz
     , hxt
     , latex-svg-image
@@ -70,6 +72,7 @@ test-suite autotool-capabilitiesio-instances-test
     , diagrams-lib
     , diagrams-svg
     , directory
+    , exceptions
     , graphviz
     , hxt
     , latex-svg-image
