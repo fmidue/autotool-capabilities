@@ -74,7 +74,7 @@ instance MonadDiagrams (RandT g IO) where
   lin = lift lin
   renderDiagram = lift . renderDiagram
 
-instance MonadDiagrams (ExceptT String IO) where
+instance MonadDiagrams (ExceptT e IO) where
   lin = lift lin
   renderDiagram = lift . renderDiagram
 
