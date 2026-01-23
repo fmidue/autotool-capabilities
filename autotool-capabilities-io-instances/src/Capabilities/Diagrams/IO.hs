@@ -26,6 +26,7 @@ import qualified Graphics.SVGFonts.Fonts (
 
 import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
 
+import Control.Monad.Trans.Except       (ExceptT)
 import Control.Monad.Random             (RandT)
 import Control.Monad.Trans.Class        (MonadTrans (lift))
 import Data.ByteString.Internal         (w2c)
@@ -70,6 +71,10 @@ instance MonadDiagrams IO where
   renderDiagram g = encodeUtf8 . LT.toStrict <$> groupSVG (renderSVG (dims2D 400 400) g)
 
 instance MonadDiagrams (RandT g IO) where
+  lin = lift lin
+  renderDiagram = lift . renderDiagram
+
+instance MonadDiagrams (ExceptT String IO) where
   lin = lift lin
   renderDiagram = lift . renderDiagram
 
