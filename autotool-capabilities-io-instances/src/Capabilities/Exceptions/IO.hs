@@ -8,8 +8,8 @@ import Control.Monad.Catch              (MonadCatch(..), MonadThrow (..))
 import Control.Monad.Trans.Class        (lift)
 import Control.Monad.Trans.Random       (RandT, liftCatch)
 
-instance {-# OVERLAPPABLE #-} MonadThrow (RandT g IO) where
+instance MonadThrow (RandT g IO) where
   throwM = lift . throwM
 
-instance {-# OVERLAPPABLE #-} MonadCatch (RandT g IO) where
+instance MonadCatch (RandT g IO) where
   catch = liftCatch catch
