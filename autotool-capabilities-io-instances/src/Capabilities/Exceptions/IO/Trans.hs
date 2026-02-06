@@ -1,8 +1,8 @@
 {-# OPTIONS_GHC -Wno-orphans #-}
 {-# LANGUAGE FlexibleInstances #-}
--- | Defines exception handling instances for IO based randomization.
+-- | Defines RandT instances for exception handling.
 
-module Capabilities.Exceptions.IO () where
+module Capabilities.Exceptions.IO.Trans () where
 
 import Control.Monad.Catch              (MonadCatch(..), MonadThrow (..))
 import Control.Monad.Trans.Class        (lift)
