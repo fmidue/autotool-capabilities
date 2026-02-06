@@ -45,10 +45,13 @@ library:
   source-dirs: src
   exposed-modules:
     - Capabilities.Alloy.IO
+    - Capabilities.Alloy.IO.Trans
     - Capabilities.Cache.IO
     - Capabilities.Diagrams.IO
+    - Capabilities.Diagrams.IO.Trans
     - Capabilities.Exceptions.IO
     - Capabilities.Graphviz.IO
+    - Capabilities.Graphviz.IO.Trans
     - Capabilities.LatexSvg.IO
     - Capabilities.PlantUml.IO
     - Capabilities.WriteFile.IO
