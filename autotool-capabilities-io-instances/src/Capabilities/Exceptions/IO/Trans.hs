@@ -1,6 +1,6 @@
-{-# LANGUAGE FlexibleInstances #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
--- | Defines transformer instances for exception handling.
+{-# LANGUAGE FlexibleInstances #-}
+-- | Defines RandT instances for exception handling.
 
 module Capabilities.Exceptions.IO.Trans () where
 
