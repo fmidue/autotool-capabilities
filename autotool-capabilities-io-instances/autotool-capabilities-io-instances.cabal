@@ -18,7 +18,7 @@ library
       Capabilities.Cache.IO
       Capabilities.Diagrams.IO
       Capabilities.Diagrams.IO.Trans
-      Capabilities.Exceptions.IO
+      Capabilities.Exceptions.IO.Trans
       Capabilities.Graphviz.IO
       Capabilities.Graphviz.IO.Trans
       Capabilities.LatexSvg.IO
