@@ -5,6 +5,7 @@
 module Capabilities.Alloy.IO.Trans () where
 
 import Capabilities.Alloy               (MonadAlloy (..))
+import Capabilities.Alloy.IO            ()
 
 import Control.Monad.Random             (RandT)
 import Control.Monad.Trans.Class        (MonadTrans (lift))

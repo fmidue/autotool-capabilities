@@ -5,6 +5,7 @@
 module Capabilities.Graphviz.IO.Trans () where
 
 import Capabilities.Graphviz            (MonadGraphviz (..))
+import Capabilities.Graphviz.IO         ()
 
 import Control.Monad.Random             (RandT)
 import Control.Monad.Trans.Class        (MonadTrans (lift))

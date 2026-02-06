@@ -5,6 +5,7 @@
 module Capabilities.Diagrams.IO.Trans () where
 
 import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
+import Capabilities.Diagrams.IO         ()
 
 import Control.Monad.Random             (RandT)
 import Control.Monad.Trans.Class        (MonadTrans (lift))
