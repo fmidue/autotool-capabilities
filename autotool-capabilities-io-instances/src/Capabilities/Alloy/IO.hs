@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -Wno-orphans #-}
--- | Defines the IO instance for capability Alloy
+-- | Defines the IO instance for capability Alloy.
 
 module Capabilities.Alloy.IO () where
 
