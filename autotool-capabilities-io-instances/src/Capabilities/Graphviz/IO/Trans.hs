@@ -7,8 +7,8 @@ module Capabilities.Graphviz.IO.Trans () where
 import Capabilities.Graphviz            (MonadGraphviz (..))
 
 import Control.Monad.Random             (RandT)
-import Control.Monad.Trans.Except       (ExceptT)
 import Control.Monad.Trans.Class        (MonadTrans (lift))
+import Control.Monad.Trans.Except       (ExceptT)
 
 instance MonadGraphviz (RandT g IO)  where
   errorWithoutGraphviz = lift errorWithoutGraphviz

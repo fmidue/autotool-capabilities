@@ -6,9 +6,9 @@ module Capabilities.Diagrams.IO.Trans () where
 
 import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
 
-import Control.Monad.Trans.Except       (ExceptT)
 import Control.Monad.Random             (RandT)
 import Control.Monad.Trans.Class        (MonadTrans (lift))
+import Control.Monad.Trans.Except       (ExceptT)
 
 instance MonadDiagrams (RandT g IO) where
   lin = lift lin
