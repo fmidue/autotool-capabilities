@@ -46,7 +46,6 @@ library:
     - Capabilities.Graphviz
     - Capabilities.LatexSvg
     - Capabilities.PlantUml
-    - Capabilities.WriteFile
 
 tests:
   autotool-capabilities-test:
