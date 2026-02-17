@@ -1,7 +1,7 @@
 -- | Defines a monad context for caching.
 
 module Capabilities.Cache (
-  MonadCache (..),
+  MonadFileCache (..),
   cache,
   short,
   ) where
@@ -17,13 +17,13 @@ import Control.OutputCapable.Blocks.Generic (
 import Data.ByteString                  (ByteString)
 import Data.Digest.Pure.SHA             (sha256, showDigest)
 
-class Monad m => MonadCache m where
+class Monad m => MonadFileCache m where
   appendCollisionFile :: FilePath -> String -> m ()
   doesCacheExist :: FilePath -> m Bool
   readShowFile :: FilePath -> m ByteString
   writeShowFile :: FilePath -> ByteString -> m ()
 
-instance MonadCache m => MonadCache (GenericReportT l o m)  where
+instance MonadFileCache m => MonadFileCache (GenericReportT l o m)  where
   appendCollisionFile f = lift . appendCollisionFile f
   doesCacheExist = lift . doesCacheExist
   readShowFile = lift . readShowFile
@@ -37,7 +37,7 @@ The provided file path is extended by the provided name, a hash of the textual
 representation of the input, and the extension.
 -}
 cache
-  :: (MonadCache m, Show a)
+  :: (MonadFileCache m, Show a)
   => FilePath
   -- ^ base file path (prefix of file name)
   -> String
