@@ -5,11 +5,11 @@ module Capabilities.Cache.IO () where
 
 import qualified Data.ByteString        as BS (readFile, writeFile)
 
-import Capabilities.Cache               (MonadCache (..))
+import Capabilities.Cache               (MonadFileCache (..))
 
 import System.Directory                 (doesFileExist)
 
-instance MonadCache IO where
+instance MonadFileCache IO where
   appendCollisionFile = appendFile
   doesCacheExist = doesFileExist
   readShowFile = BS.readFile
