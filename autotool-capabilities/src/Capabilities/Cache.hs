@@ -2,7 +2,7 @@
 
 module Capabilities.Cache (
   MonadFileCache (..),
-  cache,
+  cacheFile,
   short,
   ) where
 
@@ -36,7 +36,7 @@ next to the generated output.
 The provided file path is extended by the provided name, a hash of the textual
 representation of the input, and the extension.
 -}
-cache
+cacheFile
   :: (MonadFileCache m, Show a)
   => FilePath
   -- ^ base file path (prefix of file name)
@@ -49,7 +49,7 @@ cache
   -> (a -> m ByteString)
   -- ^ how to create something from what
   -> m FilePath
-cache path ext name what how = (file <$) . cacheBy $ how what
+cacheFile path ext name what how = (file <$) . cacheBy $ how what
   where
     cacheBy create = do
       let create' = create >>= writeShowFile file >>
