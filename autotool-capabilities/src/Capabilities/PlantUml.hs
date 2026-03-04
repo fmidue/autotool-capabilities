@@ -4,14 +4,7 @@ module Capabilities.PlantUml (
   MonadPlantUml (drawPlantUmlSvg),
   ) where
 
-import Control.Monad.Trans.Class        (MonadTrans (lift))
-import Control.OutputCapable.Blocks.Generic (
-  GenericReportT
-  )
 import Data.ByteString                  (ByteString)
 
 class Monad m => MonadPlantUml m where
   drawPlantUmlSvg :: ByteString -> m ByteString
-
-instance MonadPlantUml m => MonadPlantUml (GenericReportT l o m) where
-  drawPlantUmlSvg = lift . drawPlantUmlSvg

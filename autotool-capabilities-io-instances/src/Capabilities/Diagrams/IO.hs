@@ -1,9 +1,10 @@
 {-# LANGUAGE Arrows #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE OverloadedLists #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
--- | Defines the IO instance for capability Diagrams.
+-- | Defines IO based instances for capability Diagrams.
 
 module Capabilities.Diagrams.IO () where
 
@@ -25,6 +26,10 @@ import qualified Graphics.SVGFonts.Fonts (
 
 import Capabilities.Diagrams            (MonadDiagrams (lin, renderDiagram))
 
+import Control.Monad.Trans.Class                  (MonadTrans (lift))
+import Control.OutputCapable.Blocks.Generic (
+  GenericReportT
+  )
 import Data.ByteString.Internal         (w2c)
 import Data.Data                        (Typeable)
 import Diagrams.Backend.SVG             (SVG(SVG))
@@ -65,6 +70,10 @@ import Data.Maybe                       (maybeToList)
 instance MonadDiagrams IO where
   lin = Graphics.SVGFonts.Fonts.lin
   renderDiagram g = encodeUtf8 . LT.toStrict <$> groupSVG (renderSVG (dims2D 400 400) g)
+
+instance MonadDiagrams (GenericReportT l o IO)  where
+  lin = lift lin
+  renderDiagram = lift . renderDiagram
 
 data SVGOptions = SVGOptions
   { xmlns

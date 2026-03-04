@@ -8,7 +8,6 @@ extra-source-files:
 description: Please see the README on GitHub at <https://github.com/fmidue/autotool-capabilities/autotool-capabilities-io-instances#readme>
 
 dependencies:
-  - MonadRandom
   - autotool-capabilities
   - base >= 4.7 && < 5
   - call-alloy >= 0.6.0.2 && < 0.7
@@ -22,10 +21,12 @@ dependencies:
   - graphviz
   - hxt
   - latex-svg-image
+  - output-blocks
   - string-interpolate
   - SVGFonts
   - svg-builder
   - text
+  - transformers
   - xml-conduit
 
 ghc-options:

@@ -4,10 +4,6 @@ module Capabilities.Diagrams (
   MonadDiagrams (lin, renderDiagram),
   ) where
 
-import Control.Monad.Trans.Class                  (MonadTrans (lift))
-import Control.OutputCapable.Blocks.Generic (
-  GenericReportT
-  )
 import Data.ByteString                            (ByteString)
 import Data.Data                                  (Typeable)
 import Diagrams.Backend.SVG                       (SVG)
@@ -21,7 +17,3 @@ class Monad m => MonadDiagrams m where
     :: (Show n, Typeable n, RealFloat n, Monoid o)
     => QDiagram SVG V2 n o
     -> m ByteString
-
-instance MonadDiagrams m => MonadDiagrams (GenericReportT l o m)  where
-  lin = lift lin
-  renderDiagram = lift . renderDiagram

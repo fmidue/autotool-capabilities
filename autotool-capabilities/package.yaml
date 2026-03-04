@@ -16,10 +16,8 @@ dependencies:
   - fgl
   - graphviz
   - latex-svg-image
-  - output-blocks
   - SHA
   - SVGFonts
-  - transformers
   - utf8-string
 
 when:

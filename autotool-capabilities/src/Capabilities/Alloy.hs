@@ -7,22 +7,15 @@ module Capabilities.Alloy (
   maxBitWidth,
   ) where
 
-import Control.Monad.Trans.Class        (MonadTrans (lift))
 import Language.Alloy.Call (
   AlloyInstance,
   CallAlloyConfig (..),
   SatSolver (..),
   defaultCallAlloyConfig,
   )
-import Control.OutputCapable.Blocks.Generic (
-  GenericReportT
-  )
 
 class Monad m => MonadAlloy m where
   getInstancesWith :: CallAlloyConfig -> String -> m [AlloyInstance]
-
-instance MonadAlloy m => MonadAlloy (GenericReportT l o m)  where
-  getInstancesWith config = lift . getInstancesWith config
 
 getInstances
   :: MonadAlloy m
