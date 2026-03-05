@@ -16,9 +16,7 @@ dependencies:
   - fgl
   - graphviz
   - latex-svg-image
-  - SHA
   - SVGFonts
-  - utf8-string
 
 when:
   condition: flag(alloy-use-sat4j)

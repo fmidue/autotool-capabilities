@@ -22,11 +22,13 @@ dependencies:
   - hxt
   - latex-svg-image
   - output-blocks
+  - SHA
   - string-interpolate
   - SVGFonts
   - svg-builder
   - text
   - transformers
+  - utf8-string
   - xml-conduit
 
 ghc-options:

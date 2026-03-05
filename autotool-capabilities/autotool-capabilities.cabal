@@ -30,8 +30,7 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      SHA
-    , SVGFonts
+      SVGFonts
     , base >=4.7 && <5
     , bytestring
     , call-alloy
@@ -40,7 +39,6 @@ library
     , fgl
     , graphviz
     , latex-svg-image
-    , utf8-string
   default-language: Haskell2010
   if flag(alloy-use-sat4j)
     cpp-options: -DALLOY_USE_SAT4J
@@ -54,8 +52,7 @@ test-suite autotool-capabilities-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      SHA
-    , SVGFonts
+      SVGFonts
     , autotool-capabilities
     , base >=4.7 && <5
     , bytestring
@@ -65,7 +62,6 @@ test-suite autotool-capabilities-test
     , fgl
     , graphviz
     , latex-svg-image
-    , utf8-string
   default-language: Haskell2010
   if flag(alloy-use-sat4j)
     cpp-options: -DALLOY_USE_SAT4J
