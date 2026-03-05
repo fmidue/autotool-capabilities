@@ -5,10 +5,6 @@ module Capabilities.Graphviz (
   MonadGraphviz (errorWithoutGraphviz, layoutGraph, layoutGraph'),
   ) where
 
-import Control.Monad.Trans.Class        (MonadTrans (lift))
-import Control.OutputCapable.Blocks.Generic (
-  GenericReportT
-  )
 import Data.GraphViz (
   AttributeEdge,
   AttributeNode,
@@ -30,8 +26,3 @@ class Monad m => MonadGraphviz m where
     -> GraphvizCommand
     -> gr v e
     -> m (gr (AttributeNode v) (AttributeEdge e))
-
-instance MonadGraphviz m => MonadGraphviz (GenericReportT l o m)  where
-  errorWithoutGraphviz = lift errorWithoutGraphviz
-  layoutGraph command = lift . layoutGraph command
-  layoutGraph' params command = lift . layoutGraph' params command

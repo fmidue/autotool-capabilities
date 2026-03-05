@@ -5,10 +5,6 @@ module Capabilities.LatexSvg (
   renderLatexSvg,
   ) where
 
-import Control.Monad.Trans.Class        (MonadTrans (lift))
-import Control.OutputCapable.Blocks.Generic (
-  GenericReportT
-  )
 import Data.ByteString                  (ByteString)
 import Data.Maybe                       (fromMaybe)
 import Image.LaTeX.Render (
@@ -21,9 +17,6 @@ import Image.LaTeX.Render (
 
 class Monad m => MonadLatexSvg m where
   renderImage :: EnvironmentOptions -> FormulaOptions -> Formula -> m ByteString
-
-instance MonadLatexSvg m => MonadLatexSvg (GenericReportT l o m) where
-  renderImage opts mEnv = lift . renderImage opts mEnv
 
 
 {- |

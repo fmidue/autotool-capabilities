@@ -11,7 +11,7 @@ packages:
 
 extra-deps:
   - git: https://github.com/fmidue/output-blocks
-    commit: 17cf98f45928f4a1e4a3e301a2911fddad6e4357
+    commit: e97c5f06a17c5b99f0bed2a733bfbf974304adf3
     subdirs:
       - output-blocks
   - call-alloy-0.6.0.2

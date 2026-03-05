@@ -1,6 +1,7 @@
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
--- | Defines the IO instance for capability Graphviz.
+-- | Defines IO based instances for capability Graphviz.
 
 module Capabilities.Graphviz.IO () where
 
@@ -11,6 +12,10 @@ import qualified Diagrams.TwoD.GraphViz           as GV (
 
 import Capabilities.Graphviz            (MonadGraphviz (..))
 
+import Control.Monad.Trans.Class        (MonadTrans (lift))
+import Control.OutputCapable.Blocks.Generic (
+  GenericReportT
+  )
 import Data.GraphViz                    (quitWithoutGraphviz)
 import Data.String.Interpolate          (iii)
 
@@ -22,3 +27,8 @@ instance MonadGraphviz IO where
       |]
   layoutGraph = GV.layoutGraph
   layoutGraph' = GV.layoutGraph'
+
+instance MonadGraphviz (GenericReportT l o IO)  where
+  errorWithoutGraphviz = lift errorWithoutGraphviz
+  layoutGraph command = lift . layoutGraph command
+  layoutGraph' params command = lift . layoutGraph' params command
