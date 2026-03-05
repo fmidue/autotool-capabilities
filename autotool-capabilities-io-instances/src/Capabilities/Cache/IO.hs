@@ -18,8 +18,7 @@ import Data.Digest.Pure.SHA             (sha256, showDigest)
 import System.Directory                 (doesFileExist)
 
 instance MonadFileCache (GenericReportT l o IO)  where
-  cacheFile path ext name what how = file <$
-      do
+  cacheFile path ext name what how = file <$ do
         let create = how what >>= (lift . BS.writeFile file) >>
                      lift (BS.writeFile whatFile what')
         isFile <- lift $ doesFileExist file
