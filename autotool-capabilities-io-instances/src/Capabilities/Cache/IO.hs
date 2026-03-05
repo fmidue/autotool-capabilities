@@ -19,8 +19,6 @@ import System.Directory                 (doesFileExist)
 
 instance MonadFileCache (GenericReportT l o IO)  where
   cacheFile path ext name what how = file <$ do
-        let create = how what >>= (lift . BS.writeFile file) >>
-                     lift (BS.writeFile whatFile what')
         isFile <- lift $ doesFileExist file
         if isFile
           then do
@@ -34,3 +32,5 @@ instance MonadFileCache (GenericReportT l o IO)  where
       whatId = path ++ name ++ showDigest (sha256 $ LBS.fromStrict what')
       whatFile = whatId ++ ".hs"
       file = whatId ++ ext
+      create = how what >>= (lift . BS.writeFile file)
+               >> lift (BS.writeFile whatFile what')
