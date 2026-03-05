@@ -18,19 +18,19 @@ import Data.Digest.Pure.SHA             (sha256, showDigest)
 import System.Directory                 (doesFileExist)
 
 instance MonadFileCache (GenericReportT l o IO)  where
-  cacheFile path ext name what how = (file <$) . cacheBy $ how what
-    where
-      cacheBy create = do
-        let create' = create >>= (lift . BS.writeFile file) >>
-                      lift (BS.writeFile whatFile what')
+  cacheFile path ext name what how = file <$
+      do
+        let create = how what >>= (lift . BS.writeFile file) >>
+                     lift (BS.writeFile whatFile what')
         isFile <- lift $ doesFileExist file
         if isFile
           then do
             f <- lift $ BS.readFile whatFile
             when (f /= what') $ do
               lift $ appendFile (path ++ "busted.txt") whatId
-              create'
-          else create'
+              create
+          else create
+    where
       what' = BS.fromString $ show what
       whatId = path ++ name ++ showDigest (sha256 $ LBS.fromStrict what')
       whatFile = whatId ++ ".hs"
